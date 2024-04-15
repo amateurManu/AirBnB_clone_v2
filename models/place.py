@@ -46,7 +46,7 @@ class Place(BaseModel, Base):
             """
             from models import storage
             allreviews = storage.all(Review)
-            list_review =[]
+            list_review = []
             for k in allreviews.values():
                 if k.place_id == self.id:
                     list_review.append(k)

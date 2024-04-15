@@ -56,7 +56,7 @@ class BaseModel:
         dictionary = {}
 
         for key, value in self.__dict__.items():
-            if key!= '_sa_instance_state':
+            if key != '_sa_instance_state':
                 dictionary[key] = value
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()

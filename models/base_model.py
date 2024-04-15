@@ -11,13 +11,13 @@ Base = declarative_base()
 
 class BaseModel:
     """A base class for all hbnb models
-    class attributes:
+    class atributes:
         id: the class (basemodel) id
         created at: created at time and day for the instance
         updated at: updated when and day for the instance
         """
-    id = Column(String(60), nullable= False, primary_key=True, unique=True)
-    created_at = Column(DateTime, nullable=False, default=datetime.uycnow())
+    id = Column(String(60), nullable=False, primary_key=True, unique=True)
+    created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, *args, **kwargs):
@@ -33,7 +33,7 @@ class BaseModel:
             kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
                                                      '%Y-%m-%dT%H:%M:%S.%f')
             kwargs.pop('__class__', None)
-            for key, value in kwargs.item():
+            for key, value in kwargs.items():
                 setattr(self, key, value)
 
             del kwargs['__class__']

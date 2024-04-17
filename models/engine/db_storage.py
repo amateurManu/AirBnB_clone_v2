@@ -27,7 +27,7 @@ class DBStorage:
     def __init__(self):
         """instantiate the database storage  instance"""
         HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
-        HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
+        HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD') 
         HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
         HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
         HBNB_ENV = getenv('HBNB_ENV')
@@ -40,7 +40,7 @@ class DBStorage:
                                            HBNB_MYSQL_DB
                                        ), pool_pre_ping=True)
         if HBNB_ENV == 'test':
-            Base.metadata.drop_all(self.__engine)
+            Base.metadata.drop_all(self.__engine) 
 
     def all(self, cls=None):
         """query on the current database session (self.__session)
@@ -56,8 +56,8 @@ class DBStorage:
         else:
             objct = self.__session.query(cls).all()
             for obj in objct:
-                key = obj.__class__.__name__ + '.' + obj.id
-                dct[key] = obj
+                    key = obj.__class__.__name__ + '.' + obj.id
+                    dct[key] = obj
         return dct
 
     def new(self, obj):
@@ -72,7 +72,7 @@ class DBStorage:
             except Exception as ex:
                 self.__session.rollback()
                 raise ex
-
+    
     def save(self):
         """
         commit all changes of the current database session (self.__session)
@@ -94,8 +94,7 @@ class DBStorage:
         before calling Base.metadata.create_all(engine))
         """
         Base.metadata.create_all(self.__engine)
-        session_reload = sessionmaker(bind=self.__engine,
-                                      expire_on_commit=False)
+        session_reload = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(session_reload)()
 
     def close(self):

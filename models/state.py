@@ -17,7 +17,7 @@ class State(BaseModel, Base):
                               cascade='all, delete, delete-orphan')
     else:
         state_id = ""
-        # name = ""
+        #name = ""
 
         @property
         def cities(self):

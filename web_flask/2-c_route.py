@@ -18,12 +18,14 @@ def hbnb():
     """ Displays a message """
     return "HBNB"
 
+
 @app.route("/c/<text>", strict_slashes=False)
 def c_text():
     """ Displays 'C' followed by text variable
         Underscore symbols are replaced with a space
     """
     return "C %s" % text.replace('_', ' ')
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)

@@ -31,7 +31,7 @@ def c_text():
 @app.route("/python/<text>", strict_slashes=False)
 def python_text(text='is cool'):
     """ Displays 'Python' followed by value of <text> """
-    if text is not 'is cool':
+    if text != 'is cool':
         text = text.replace('_', ' ')
     return "Python %s" % text
 
@@ -48,7 +48,7 @@ def number_odd_or_even(n):
     return render_template('6-number_odd_or_even.html', number=n)
 
 
-@app.route("/number_template/<int:n>", strict_flashes=False)
+@app.route("/number_template/<int:n>", strict_slashes=False)
 def number_template(n):
     """ Displays a number """
     return render_template("5-number.html", number=n)
